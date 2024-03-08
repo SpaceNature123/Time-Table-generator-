@@ -1,0 +1,70 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+class TABLE
+{
+    void get(string &x)
+    {
+        getline(cin, x); //Getting including spaces
+    }
+    void get(int &x)
+    {
+        cin >> x;
+    }
+    void get(char &x)
+    {
+        cin >> x;
+    }
+    vector<vector<vector<string>>> getDetails()
+    {
+        int no_of_subjects, input_i;
+        //string input_s;
+        cout << "Enter number of subjects : ";
+        get(input_i);
+        no_of_subjects = input_i;
+        //Saving to another variable to prevent potential issues
+        cin.ignore(); //ingnoring newline character
+        vector<vector<vector<string>>> subjects(no_of_subjects, vector<vector<string>>(no_of_subjects, vector<string>(1)));
+        //The table is saved as subject -> Teacher 1 -> No_of_classes
+        for (int i = 0; i < no_of_subjects; i++)
+        {
+            string input_s;
+            cout << "Enter the name of each subject\n";
+            get(input_s); //input_s serves as a name of a subject
+            subjects[i][0][0] = input_s;
+            for (int j = 0; j < no_of_subjects; j++)
+            {
+                cout << "Enter number of teachers for " << subjects[i][0][0] << " : ";
+                get(input_i);
+                subjects[i][j][0] = input_i;
+                int var = input_i;
+                for (int k = 0; k < var; k++)
+                {
+                    cout << "Enter number of classes for Teacher " << k << " : ";
+                    get(input_i);
+                    subjects[i][j][k] = input_i;
+                }
+            }
+        }
+        return subjects;
+    }
+    void printTable()
+    {
+        vector<vector<vector<string>>> subjects;
+        subjects = getDetails();
+        int var = (int)subjects.size();
+        for(int i=0;i<no_of_days;i++)
+        {
+            string t[no_of_periods];
+            for(int j=0;j<no_of_periods;j++)
+            {
+                int var2 = random(var);
+                t[j]=subjects[var2][random(subjects[var2][random()])];
+            }
+        }
+    }
+};
+int main()
+{
+    
+}
