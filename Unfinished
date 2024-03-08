@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 class TABLE
 {
@@ -14,6 +16,10 @@ class TABLE
     void get(char &x)
     {
         cin >> x;
+    }
+    int random(int x)
+    {
+        return rand() % x;
     }
     vector<vector<vector<string>>> getDetails()
     {
@@ -66,5 +72,5 @@ class TABLE
 };
 int main()
 {
-    
+    srand(time(0));//Seed for random fucntion 
 }
